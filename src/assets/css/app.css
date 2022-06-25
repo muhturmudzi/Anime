@@ -1,1 +1,132 @@
-/*# sourceMappingURL=app.css.map */
+@font-face {
+  font-family: "Anime Ace Bold";
+  src: url(../fonts/anime-ace.bold.ttf);
+}
+@font-face {
+  font-family: "Anime Ace Italic";
+  src: url(../fonts/anime-ace.italic.ttf);
+}
+@font-face {
+  font-family: "Anime Ace Regular";
+  src: url(../fonts/anime-ace.regular.ttf);
+}
+@font-face {
+  font-family: "Gotham Book";
+  src: url(../fonts/GothamBook.ttf);
+}
+.text-center {
+  text-align: center;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: #3D3D3D;
+  font-family: "Gotham Book", "sans-serif";
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+ul,
+ol {
+  padding-left: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.88;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Anime Ace Bold", "sans-serif";
+  font-weight: bold;
+  line-height: initial;
+}
+
+.list {
+  list-style: none;
+}
+.list--inline {
+  display: inline-flex;
+}
+
+.section {
+  position: relative;
+  margin: 80px 0;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  padding: 0 20px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.container--medium {
+  max-width: 1124px;
+}
+.container--short {
+  max-width: 980px;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 90;
+  background: #960018;
+  padding: 12px 0;
+}
+.topbar .list--inline {
+  min-height: 24px;
+}
+.topbar .list--inline > li:not(:last-child) {
+  margin-right: 2rem;
+}
+.topbar .list--inline > li a {
+  color: #FFDB58;
+  font-family: "Anime Ace Italic", "sans-serif";
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+@media screen and (min-width: 700px) {
+  .topbar .list--inline > li a {
+    font-size: 16px;
+  }
+}
+.topbar .list--inline > li a.active {
+  font-family: "Anime Ace Bold", "sans-serif";
+  font-size: 16px;
+}
+@media screen and (min-width: 700px) {
+  .topbar .list--inline > li a.active {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=app.css.map */

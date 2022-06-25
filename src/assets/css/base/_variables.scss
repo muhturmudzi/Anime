@@ -1,0 +1,30 @@
+// Color
+$black          : #3D3D3D;
+$red            : #960018;
+$brown          : #FFDB58;
+
+// Fonts
+$anime-bold     : 'Anime Ace Bold', 'sans-serif';
+$anime-italic   : 'Anime Ace Italic', 'sans-serif';
+$anime-regular  : 'Anime Ace Regular', 'sans-serif';
+$gotham-book    : 'Gotham Book', 'sans-serif';
+
+// Spacing
+$gutter         : 20px;
+$big-gutter     : $gutter * 2;
+
+// Box
+$radius-biggest : 20px;
+$radius-big     : 10px;
+$radius-small   : 5px;
+
+// Shadow
+%has-shadow {
+  // box-shadow: 0px 5px 16px rgba(107, 107, 107, 0.2);
+  filter: drop-shadow(0px 5px 16px rgba(107, 107, 107, 0.2));
+}
+
+// Container
+$container: 1240px;
+$container-medium: 1124px;
+$container-short: 980px;

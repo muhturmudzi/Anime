@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  max-width: $container;
+  padding: 0 $gutter;
+  margin: 0 auto;
+  z-index: 1;
+
+  &--medium {
+    max-width: $container-medium;
+  }
+
+  &--short {
+    max-width: $container-short;
+  }
+}
