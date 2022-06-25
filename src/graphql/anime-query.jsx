@@ -21,17 +21,19 @@ export const GET_LIST_ANIME = gql`
           color
         }
         bannerImage
-        genres
-        episodes
-        chapters
-        isAdult
-        type
         status
-        popularity
+        episodes
       }
     }
   }
-`
+  `
+  // genres
+  // episodes
+  // chapters
+  // isAdult
+  // type
+  // status
+  // popularity
 
 export const GET_ANIME_DETAIL = gql`
   query getAnimeDetail ($id: Int) {

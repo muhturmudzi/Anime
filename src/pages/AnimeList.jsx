@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client'
 
 import { GET_LIST_ANIME } from './../graphql/anime-query'
 
+import Card from '../components/Card'
+
 export default function AnimeList () {
   const [page, setPage] = useState(1)
   const [Animes, setAnimes] = useState([])
@@ -10,7 +12,7 @@ export default function AnimeList () {
 
   useEffect(() => {
     setAnimes(data)
-    console.log(data, page)
+    console.log( data, page)
   }, [data])
 
   const changePage = () => {
@@ -20,8 +22,15 @@ export default function AnimeList () {
   return (
     <main>
       <section className="section">
-        <div className="container" onClick={changePage}>
-          hallo ini anime list
+        <div className="container">
+          <div className="wrap">
+            {Animes && Animes.Page && Animes.Page.media.map((item, index) => {
+              return <Card key={index} number={((page-1)*20)+index+1} id={item.id} title={item.title.english}
+                image={item.coverImage.large} status={item.status} episodes={item.episodes} />
+            })}
+          </div>
+
+          <a href="#" onClick={changePage}>tambah page</a>
         </div>
       </section>
     </main>

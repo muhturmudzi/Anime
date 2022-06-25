@@ -3,3 +3,11 @@
 
 // Padding
 .p-0 { padding: 0; }
+
+// Others
+.wrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
