@@ -5,6 +5,7 @@
   z-index: 90;
   background: $red;
   padding: 12px 0;
+  @extend %has-shadow;
   // min-height: 50px;
   
   .list--inline {

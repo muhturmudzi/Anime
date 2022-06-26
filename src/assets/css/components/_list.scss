@@ -5,3 +5,48 @@
     display: inline-flex;
   }
 }
+
+.paginate {
+  list-style: none;
+  display: inline-flex;
+  padding-left: 0;
+  background: #B4DEEE;
+  padding: 10px;
+  border-radius: $radius-big;
+  width: 100%;
+  justify-content: center;
+  margin-top: 3rem;
+  align-items: center;
+  font-size: 14px;
+
+  & > li {
+    color: #473974;
+    font-weight: bold;
+
+    a {
+      cursor: pointer;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 1rem;
+    }
+
+    &.previous {
+      margin-right: 2rem;
+    }
+
+    &.next {
+      margin-left: 1rem;
+    }
+
+    &.selected {
+      height: 25px;
+      width: 25px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

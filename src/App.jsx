@@ -4,12 +4,14 @@ import { ApolloProvider } from '@apollo/client'
 
 import './assets/css/app.css'
 
-import { client } from './graphql/index'
+import { client } from './graphql/Index'
 
 import Topbar from './components/Topbar'
 
 const AnimeList = React.lazy(() => import('./pages/AnimeList'))
 const CollectionList = React.lazy(() => import('./pages/CollectionList'))
+const AnimeDetail = React.lazy(() => import('./pages/AnimeDetail'))
+const CollectionDetail = React.lazy(() => import('./pages/CollectionDetail'))
 
 const Loading = () => {
   return <span>Loading</span>
@@ -24,6 +26,8 @@ function App() {
             <Route path="/" element={<LayoutsWithNavbar />}>
               <Route path='/anime-list' element={<AnimeList />} />
               <Route path='/collection-list' element={<CollectionList />} />
+              <Route path='/anime-detail/:id' element={<AnimeDetail />} />
+              <Route path='/collection-detail/:title' element={<CollectionDetail />} />
               <Route path='/' element={<Navigate to='/anime-list' replace />}/>
             </Route>
           </Routes>
