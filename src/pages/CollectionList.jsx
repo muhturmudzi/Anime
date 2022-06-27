@@ -29,10 +29,11 @@ export default function CollectionList () {
 
   const removeCollection = (index) => {
     console.log(index)
-    let data = myCollection
-    data.splice(index,1)
-    setMyCollection(data)
-    saveCollection(data)
+    // let data = myCollection
+    // data.splice(index,1)
+    // setMyCollection(data)
+    setMyCollection(myCollection.filter((_, indexCollection) => indexCollection !== index))
+    saveCollection(myCollection.filter((_, indexCollection) => indexCollection !== index))
   }
 
   return (

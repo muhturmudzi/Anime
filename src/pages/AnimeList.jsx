@@ -32,7 +32,7 @@ export default function AnimeList () {
 
   const handlePageClick = (event) => {
     // console.log(event, 'value click')
-    setPage(event.selected)
+    setPage(event.selected+1)
     // console.log(page, 'currentpage')
   }
 
@@ -66,7 +66,7 @@ export default function AnimeList () {
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={1}
-            forcePage={1}
+            forcePage={0}
             pageCount={pageCount}
             previousLabel="< previous"
             renderOnZeroPageCount={null}

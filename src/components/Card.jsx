@@ -18,9 +18,9 @@ export default function Card ({ number, id, type, title, image, status, episodes
         <div className="card__main">
           <h3 className="card__main__title">{title}</h3>
           {status && 
-            <div className={`card__main__status ${status === 'FINISHED'? 'done' : ''}`}>
+            <span className={`card__main__status ${status === 'FINISHED'? 'done' : ''}`}>
               {status}
-            </div>
+            </span>
           }
           {/* {episodes && <div className="card__main__status episodes">Total {episodes} Episodes</div>} */}
         </div>
