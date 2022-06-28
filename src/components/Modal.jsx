@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { getCollection, saveCollection, saveDetailCollection } from '../helper/Storage'
+import { getCollection, saveCollection } from '../helper/Storage'
 
 export default function Modal ({ modal, animeChoosed, close }) {
   const [collections, setCollection] = useState(getCollection)
@@ -81,7 +81,7 @@ export default function Modal ({ modal, animeChoosed, close }) {
 
   let navigate = useNavigate()
   const detailCollection = (item) => {
-    saveDetailCollection(item)
+    // saveDetailCollection(item)
     navigate(`/collection-detail/${item.title}`)
     console.log(item)
   }

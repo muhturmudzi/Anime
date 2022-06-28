@@ -22,7 +22,7 @@ export default function CollectionList () {
 
   let navigate = useNavigate()
   const detailCollection = (item) => {
-    saveDetailCollection(item)
+    // saveDetailCollection(item)
     navigate(`/collection-detail/${item.title}`)
     console.log(item)
   }
@@ -59,7 +59,7 @@ export default function CollectionList () {
               )
             })}
 
-            {myCollection.length < 1 && <span>Tidak ada Collection</span>}
+            {myCollection.length < 1 && <span>Collection not available</span>}
           </div>
         </div>
       </section>

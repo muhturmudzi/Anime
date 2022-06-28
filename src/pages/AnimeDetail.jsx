@@ -4,6 +4,8 @@ import { useQuery } from '@apollo/client'
 
 import { GET_ANIME_DETAIL } from '../graphql/AnimeQuery'
 
+import { getCollection } from '../helper/Storage'
+
 import Modal from '../components/Modal'
 
 export default function AnimeDetail () {
@@ -12,13 +14,23 @@ export default function AnimeDetail () {
   const [modal, setModal] = useState(false)
   const { loading, error, data } = useQuery(GET_ANIME_DETAIL, { variables: { id: id } })
 
-  // const setData = async () => {
-  //   await setAnime(data && data.Media)
-  // }
+  console.log(id)
+  let animeAdded = getCollection().filter(item => item.animeList.find(anime => anime.id == id))
+  console.log(animeAdded, 'anime added')
+  // let animeAdded = []
+  // getCollection().forEach(item => {
+  //   item.animeList.forEach(anime => {
+  //     console.log(anime.id == id)
+  //   })
+  // })
 
-  useEffect(() => {
-    setAnime(data && data.Media)
-    console.log(Anime)
+  // const setData = async () => {
+    //   await setAnime(data && data.Media)
+    // }
+    
+    useEffect(() => {
+      setAnime(data && data.Media)
+      // console.log(Anime)
   })
 
   const showHideModal = (val) => {
@@ -36,6 +48,19 @@ export default function AnimeDetail () {
             <div className="text-center mt-2 mb-2">
               <h2>{Anime && Anime.title && Anime.title.english}</h2>
               <button onClick={() => showHideModal(true)} className="btn btn--primary mt-1">Add to Collection</button>
+            </div>
+            <div>
+              {animeAdded.length > 0 && 
+                <>
+                  <p className="label">This anime is available in collection</p>
+                  <div className="wrap-desc">
+                    {animeAdded.length > 0 && animeAdded.map(item => {
+                      return <span className="desc" key={item.title}>{item.title}</span>
+                    })}
+                  </div>
+                </>
+              }
+              {animeAdded.length < 1 && <p className="label">{Anime && Anime.title && Anime.title.english} not in any collection yet</p>}
             </div>
             <div>
               <p className="label">Type</p>

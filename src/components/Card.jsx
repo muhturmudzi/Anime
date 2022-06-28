@@ -21,7 +21,7 @@ export default function Card ({ number, id, type, title, image, status, episodes
               {status} {episodes && `${episodes} eps`}
             </span>
           }
-          <h3 className="card__main__title">{title}</h3>
+          <h3 className={`card__main__title ${!status? 'm-0':''}`}>{title}</h3>
           {/* {episodes && <div className="card__main__status episodes">Total {episodes} Episodes</div>} */}
         </div>
       </div>

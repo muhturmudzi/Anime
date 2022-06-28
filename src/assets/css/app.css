@@ -22,6 +22,10 @@
   text-align: center;
 }
 
+.m-0 {
+  margin: 0 !important;
+}
+
 .mt-1 {
   margin-top: 1rem;
 }
@@ -455,6 +459,9 @@ h6 {
 .anime-detail div {
   margin-bottom: 1.5rem;
 }
+.anime-detail div .label {
+  font-weight: 600;
+}
 .anime-detail div .wrap-desc {
   display: flex;
   flex-wrap: wrap;
@@ -465,7 +472,7 @@ h6 {
   padding: 8px 12px;
   border: 2px solid #960018;
   border-radius: 20px;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 .topbar {

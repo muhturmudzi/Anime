@@ -20,7 +20,7 @@
     margin-bottom: 1.5rem;
 
     .label {
-      
+     font-weight: 600; 
     }
 
     .wrap-desc {
@@ -34,7 +34,7 @@
       padding: 8px 12px;
       border: 2px solid $red;
       border-radius: $radius-biggest;
-      margin-right: 1rem;
+      margin-right: .5rem;
     }
   }
 }
