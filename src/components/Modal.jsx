@@ -6,22 +6,26 @@ import { getCollection, saveCollection, saveDetailCollection } from '../helper/S
 export default function Modal ({ modal, animeChoosed, close }) {
   const [collections, setCollection] = useState(getCollection)
   const [title, setTitle] = useState('')
-  const [showInput, setShowInput] = useState(false)
+  const [error, setError] = useState(false)
+  // const [showInput, setShowInput] = useState(false)
 
-  useEffect(() => {
-    saveCollection(collections)
-  }, [collections])
+  // useEffect(() => {
+  //   saveCollection(collections)
+  // }, [collections])
 
   const onChangeHandler = event => {
     setTitle(event.target.value)
   }
 
   const addNewCollection = () => {
-    setShowInput(false)
+    setTitle('')
+    // setShowInput(false)
     const newCollection = { title: title, animeList: [animeChoosed]}
 
     if (collections.length < 1) {
       setCollection([newCollection])
+      saveCollection([newCollection])
+      close()
       return
     }
 
@@ -29,23 +33,28 @@ export default function Modal ({ modal, animeChoosed, close }) {
     let checkTitle = data.find(item => item.title === newCollection.title)
 
     // console.log(checkTitle)
-    if (!checkTitle) {
-      data.push(newCollection)
-      setCollection(data)
-      saveCollection(data)
-      // console.log(collections)
-    }
-  }
-
-  const showingInput = () => {
-    setTitle('')
-    if (!showInput) {
-      setShowInput(true)
+    if (checkTitle) {
+      setError(true)
       return
     }
 
-    addNewCollection()
+    setError(false)
+    data.push(newCollection)
+    setCollection(data)
+    saveCollection(data)
+    // console.log(collections)
+    close()
   }
+
+  // const showingInput = () => {
+  //   setTitle('')
+  //   if (!showInput) {
+  //     setShowInput(true)
+  //     return
+  //   }
+
+  //   addNewCollection()
+  // }
 
   const addtoCollection = (val) => {
     // console.log(val, 'title')
@@ -82,39 +91,53 @@ export default function Modal ({ modal, animeChoosed, close }) {
       <div className="close-overlay" onClick={close}></div>
       <div className="popup">
         {collections.length > 0 && (
-          <div>
-            {showInput && <input type="text" value={title} onChange={onChangeHandler} />}
-            <button onClick={showingInput}>Add as New Collection</button>
-          </div>
-        )}
-        {collections.length > 0 && collections.map((item, index) => {
-          return (
-            <div className="mt-1" key={index+item.title}>
-              <span>{item.title}</span>
-              <button onClick={() => addtoCollection(item)}>Add</button>
-              <button onClick={() => detailCollection(item)}>See Detail Collection</button>
-
-              <div>
-                {item.animeList.length > 0 && item.animeList.map((anime, indexAnime) => {
-                    return (
-                      <span key={`list-anime-${indexAnime}`}>{anime && anime.title && anime.title.english}</span>
-                    )
-                  }
-                )}
-
-                {item.animeList.length < 1 && (
-                  <span>belum memiliki anime</span>
-                )}
-              </div>
+          <>
+            <div>
+              <input className="input" placeholder="Collection's title" type="text" value={title} onChange={onChangeHandler} />
+              {error && <span className="error-msg">collection's title already exist</span>}
             </div>
-          )
-        })}
+            <div className="text-center">
+              <button className="btn btn--primary mt-1" onClick={addNewCollection}>Add as New Collection</button>
+            </div>
+            <div className="separation">
+              <div className="separation__text">or added to exist's collection</div>
+            </div>
+          </>
+        )}
+        {collections.length > 0 &&
+          <div className="card-list-collection">
+            <ul className="list list--collection p-0">
+              {collections.map((item, index) => {
+                return (
+                  <li key={index+item.title}>
+                    <span onClick={() => detailCollection(item)}>{item.title}</span>
+                    <button className="add" onClick={() => addtoCollection(item)}>+</button>
+                    {/* <button>See Detail Collection</button> */}
+      
+                    {/* <div>
+                      {item.animeList.length > 0 && item.animeList.map((anime, indexAnime) => {
+                          return (
+                            <span key={`list-anime-${indexAnime}`}>{anime && anime.title && anime.title.english}</span>
+                          )
+                        }
+                      )}
+      
+                      {item.animeList.length < 1 && (
+                        <span>belum memiliki anime</span>
+                      )}
+                    </div> */}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        }
 
         {
           collections.length < 1 && (
-            <div>
-              <input type="text" value={title} onChange={onChangeHandler} />
-              <button onClick={addNewCollection}>Add New Collection</button>
+            <div className="text-center">
+              <input className="input" placeholder="Collection's title" type="text" value={title} onChange={onChangeHandler} />
+              <button className="btn btn--primary mt-1" onClick={addNewCollection}>Add New Collection</button>
             </div>
           )
         }

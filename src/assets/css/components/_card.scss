@@ -5,6 +5,7 @@
   @extend %has-shadow;
   flex: 0 0 100%;
   cursor: pointer;
+  // align-self: center;
   
   @media screen and (min-width: 400px) {
     flex: 0 0 180px;
@@ -21,10 +22,13 @@
   &__image {
     position: relative;
     z-index: 1;
+    margin-bottom: 1rem;
 
     img {
       border-radius: 10px 10px 0 0;
       width: 100%;
+      // max-width: 200px;
+      max-height: 300px;
     }
 
     span {
@@ -43,13 +47,13 @@
   }
 
   &__main {
-    z-index: 1;
+    // z-index: 1;
     padding: 12px 12px 24px;
 
     &__title {
       font-family: $anime-regular;
       line-height: 28px;
-      margin-bottom: 1rem;
+      margin-top: 1.5rem;
       font-size: 14px;
       
       @media screen and (min-width: 700px) {
@@ -59,15 +63,15 @@
 
     &__status {
       text-align: center;
-      padding: 10px;
+      padding: 8px 12px;
       border-radius: $radius-biggest;
       color: $orange;
       background: $pink;
       font-family: $anime-regular;
-      font-size: 12px;
+      font-size: 11px;
       
       @media screen and (min-width: 700px) {
-        font-size: 14px;
+        font-size: 12px;
       }
 
       &.done {
@@ -85,8 +89,42 @@
 
   &__btn {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 3px;
+    right: 3px;
     z-index: 2;
+    display: flex;
+  }
+}
+
+.card-list-collection {
+  max-height: 250px;
+  overflow-y: scroll;
+  padding-right: .5rem;
+
+  li {
+    padding: 12px;
+    border: 1px solid $warm-white;
+    border-radius: $radius-big;
+    @extend %has-shadow;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      cursor: pointer;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: $red;
+    border-radius: $radius-big;
   }
 }

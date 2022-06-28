@@ -18,7 +18,7 @@ export default function AnimeDetail () {
 
   useEffect(() => {
     setAnime(data && data.Media)
-    // console.log(Anime)
+    console.log(Anime)
   })
 
   const showHideModal = (val) => {
@@ -29,8 +29,35 @@ export default function AnimeDetail () {
     <main>
       <section className="section">
         <div className="container">
-          parameter masuk adalah {id} {Anime && Anime.bannerImage}
-          <button onClick={() => showHideModal(true)}>add to collection</button>
+          {/* parameter masuk adalah {id} {Anime && Anime.bannerImage}
+          <button onClick={() => showHideModal(true)}>add to collection</button> */}
+          <div className="mb-2"><img src={Anime && Anime.bannerImage} alt="banner" /></div>
+          <div className="container container--short anime-detail">
+            <div className="text-center mt-2 mb-2">
+              <h2>{Anime && Anime.title && Anime.title.english}</h2>
+              <button onClick={() => showHideModal(true)} className="btn btn--primary mt-1">Add to Collection</button>
+            </div>
+            <div>
+              <p className="label">Type</p>
+              <span className="desc">{Anime && Anime.type}</span>
+            </div>
+            <div>
+              <p className="label">Popularity</p>
+              <span className="desc">{Anime && Anime.popularity}</span>
+            </div>
+            <div>
+              <p className="label">Status</p>
+              <span className="desc">{Anime && Anime.status} {Anime && Anime.episodes && <span>{Anime.episodes} episodes</span>}</span>
+            </div>
+            <div>
+              <p className="label">Genre</p>
+              <div className="wrap-desc">
+                {Anime && Anime.genres && Anime.genres.map(item => {
+                  return <span className="desc" key={item}>{item}</span>
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

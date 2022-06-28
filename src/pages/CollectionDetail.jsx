@@ -61,7 +61,7 @@ export default function MyCollectionDetail () {
     <main>
       <section className="section">
         <div className="container">
-          <h3>My Collection from {title}</h3>
+          <h3 className="text-center mb-2">{title}'s Collection</h3>
           <div className="wrap">
             {myCollection && myCollection.animeList && myCollection.animeList.map((item, index) => {
               return <Card key={index} number={index+1} id={item.id} title={item.title.english}

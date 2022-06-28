@@ -10,6 +10,8 @@ import Modal from '../components/Modal'
 
 // import { getCollection } from '../helper/Storage'
 
+const isSmallDevice = window.screen.width < 450
+
 export default function AnimeList () {
   const [modal, setModal] = useState(false)
   // const [collection, setCollection] = useState(getCollection)
@@ -62,13 +64,13 @@ export default function AnimeList () {
           {/* <a href="#" onClick={changePage}>tambah page</a> */}
           <ReactPaginate
             className="paginate"
-            // breakLabel="..."
-            nextLabel="next >"
+            breakLabel="..."
+            nextLabel={isSmallDevice? '>' : 'next >'}
             onPageChange={handlePageClick}
             pageRangeDisplayed={1}
             forcePage={0}
             pageCount={pageCount}
-            previousLabel="< previous"
+            previousLabel={isSmallDevice? '<' : '< previous'}
             renderOnZeroPageCount={null}
           />
         </div>

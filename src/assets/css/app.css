@@ -1,4 +1,4 @@
-.topbar, .card {
+.topbar, .card-list-collection li, .card {
   filter: drop-shadow(0px 5px 16px rgba(107, 107, 107, 0.2));
 }
 
@@ -26,6 +26,14 @@
   margin-top: 1rem;
 }
 
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
 .p-0 {
   padding: 0;
 }
@@ -35,6 +43,22 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+.separation {
+  position: relative;
+  width: 100%;
+  border: solid 1px #960018;
+  margin: 2rem 0;
+}
+.separation__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 10px;
+  background: white;
+  text-align: center;
+  transform: translate(-50%, -50%);
 }
 
 * {
@@ -90,6 +114,9 @@ h6 {
 .list--inline {
   display: inline-flex;
 }
+.list--collection > li {
+  margin-bottom: 1rem;
+}
 
 .paginate {
   list-style: none;
@@ -114,11 +141,15 @@ h6 {
 .paginate > li:not(:last-of-type) {
   margin-right: 1rem;
 }
-.paginate > li.previous {
-  margin-right: 2rem;
+@media screen and (min-width: 700px) {
+  .paginate > li.previous {
+    margin-right: 2rem;
+  }
 }
-.paginate > li.next {
-  margin-left: 1rem;
+@media screen and (min-width: 700px) {
+  .paginate > li.next {
+    margin-left: 1rem;
+  }
 }
 .paginate > li.selected {
   height: 25px;
@@ -155,10 +186,12 @@ h6 {
 .card__image {
   position: relative;
   z-index: 1;
+  margin-bottom: 1rem;
 }
 .card__image img {
   border-radius: 10px 10px 0 0;
   width: 100%;
+  max-height: 300px;
 }
 .card__image span {
   position: absolute;
@@ -174,13 +207,12 @@ h6 {
   font-family: "Anime Ace Bold", "sans-serif";
 }
 .card__main {
-  z-index: 1;
   padding: 12px 12px 24px;
 }
 .card__main__title {
   font-family: "Anime Ace Regular", "sans-serif";
   line-height: 28px;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
   font-size: 14px;
 }
 @media screen and (min-width: 700px) {
@@ -190,16 +222,16 @@ h6 {
 }
 .card__main__status {
   text-align: center;
-  padding: 10px;
+  padding: 8px 12px;
   border-radius: 20px;
   color: #ff5023;
   background: #ffe3dc;
   font-family: "Anime Ace Regular", "sans-serif";
-  font-size: 12px;
+  font-size: 11px;
 }
 @media screen and (min-width: 700px) {
   .card__main__status {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 .card__main__status.done {
@@ -213,9 +245,37 @@ h6 {
 }
 .card__btn {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 3px;
+  right: 3px;
   z-index: 2;
+  display: flex;
+}
+
+.card-list-collection {
+  max-height: 250px;
+  overflow-y: scroll;
+  padding-right: 0.5rem;
+}
+.card-list-collection li {
+  padding: 12px;
+  border: 1px solid #DDDDDD;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-list-collection li span {
+  cursor: pointer;
+}
+.card-list-collection li span:hover {
+  font-weight: bold;
+}
+.card-list-collection::-webkit-scrollbar {
+  width: 3px;
+}
+.card-list-collection::-webkit-scrollbar-thumb {
+  background-color: #960018;
+  border-radius: 10px;
 }
 
 .overlay-wrap {
@@ -253,23 +313,123 @@ h6 {
   width: 100%;
   height: 100%;
 }
-@media only screen and (max-width: 600px) {
-  .close-overlay {
-    z-index: 10;
-  }
-}
 
 .overlay-wrap.modal .popup {
   width: 100%;
   max-width: 450px;
   z-index: 999;
   position: relative;
-  margin: 3rem auto;
-  padding: 3rem 2rem 2rem 2rem;
   border-radius: 5px;
   background-color: #fff;
   transform: translate(0, -25%);
   transition: transform 0.3s ease-out;
+  margin: auto 1rem;
+  padding: 2rem;
+}
+@media screen and (min-width: 450px) {
+  .overlay-wrap.modal .popup {
+    margin: 3rem auto;
+    padding: 3rem 2rem 2rem;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  background: white;
+  border: 1px solid #960018;
+  border-radius: 5px;
+}
+.input:focus {
+  outline: none;
+  border-width: 2px;
+}
+.input::-moz-placeholder {
+  color: #818181;
+}
+.input:-ms-input-placeholder {
+  color: #818181;
+}
+.input::placeholder {
+  color: #818181;
+}
+
+.error-msg {
+  font-size: 12px;
+  color: #960018;
+}
+
+.btn {
+  display: inline-block;
+  line-height: initial;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+}
+.btn--primary {
+  background-color: #960018;
+  border: 2px solid #960018;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+@media screen and (min-width: 700px) {
+  .btn--primary {
+    font-size: 16px;
+  }
+}
+.btn--primary:hover {
+  color: #960018;
+  background-color: white;
+}
+.btn--primary-outline {
+  background-color: transparent;
+  border: 2px solid #960018;
+  color: #960018;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+@media screen and (min-width: 700px) {
+  .btn--primary-outline {
+    font-size: 16px;
+  }
+}
+.btn--primary-outline:hover {
+  color: white;
+  background-color: #960018;
+}
+
+.add, .remove {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.add {
+  background: #228B22;
+  color: #FFFFF0;
+}
+
+.remove {
+  background: #ffe3dc;
+  margin-left: 0.5rem;
+  position: relative;
+}
+.remove:after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff5023;
 }
 
 .section {
@@ -290,6 +450,22 @@ h6 {
 }
 .container--short {
   max-width: 980px;
+}
+
+.anime-detail div {
+  margin-bottom: 1.5rem;
+}
+.anime-detail div .wrap-desc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.anime-detail div .desc {
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 2px solid #960018;
+  border-radius: 20px;
+  margin-right: 1rem;
 }
 
 .topbar {

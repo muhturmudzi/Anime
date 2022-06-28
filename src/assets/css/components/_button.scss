@@ -1,0 +1,74 @@
+.btn {
+  display: inline-block;
+  line-height: initial;
+  padding: 8px 16px;
+  border-radius: $radius-small;
+  border: none;
+
+  &--primary {
+    background-color: $red;
+    border: 2px solid $red;
+    color: white;
+    font-weight: 600;
+    transition: all .3s ease;
+    font-size: 14px;
+    
+    @media screen and (min-width: 700px) {
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: $red;
+      background-color: white;
+    }
+  }
+
+  &--primary-outline {
+    background-color: transparent;
+    border: 2px solid $red;
+    color: $red;
+    font-weight: 600;
+    transition: all .3s ease;
+    font-size: 14px;
+    
+    @media screen and (min-width: 700px) {
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: white;
+      background-color: $red;
+    }
+  }
+}
+
+.add, .remove {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.add {
+  background: $green;
+  color: $dim-white;
+}
+
+.remove {
+  background: $pink;
+  margin-left: .5rem;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $orange;
+  }
+}

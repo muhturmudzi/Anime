@@ -13,3 +13,28 @@
     max-width: $container-short;
   }
 }
+
+.anime-detail {
+
+  div {
+    margin-bottom: 1.5rem;
+
+    .label {
+      
+    }
+
+    .wrap-desc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .desc {
+      font-size: 16px;
+      padding: 8px 12px;
+      border: 2px solid $red;
+      border-radius: $radius-biggest;
+      margin-right: 1rem;
+    }
+  }
+}
