@@ -8,13 +8,10 @@ import { GET_LIST_ANIME } from '../graphql/AnimeQuery'
 import Card from '../components/Card'
 import Modal from '../components/Modal'
 
-// import { getCollection } from '../helper/Storage'
-
 const isSmallDevice = window.screen.width < 450
 
 export default function AnimeList () {
   const [modal, setModal] = useState(false)
-  // const [collection, setCollection] = useState(getCollection)
   const [page, setPage] = useState(1)
   const [pageCount, setPageCount] = useState(10)
   const [Animes, setAnimes] = useState([])
@@ -23,25 +20,15 @@ export default function AnimeList () {
 
   useEffect(() => {
     setAnimes(data)
-    // console.log(data, page)
-    // const total = data && data.Page && data.Page.pageInfo && data.Page.pageInfo.lastPage
-    // setPageCount(total)
   }, [data])
 
-  // const changePage = () => {
-  //   setPage((page) => page + 1)
-  // }
-
   const handlePageClick = (event) => {
-    // console.log(event, 'value click')
     setPage(event.selected+1)
-    // console.log(page, 'currentpage')
   }
 
   let navigate = useNavigate()
   const detailAnime = (item) => {
     navigate(`/anime-detail/${item.id}`)
-    // console.log(item)
   }
 
   const showHideModal = (val, data) => {
@@ -61,7 +48,6 @@ export default function AnimeList () {
             })}
           </div>
 
-          {/* <a href="#" onClick={changePage}>tambah page</a> */}
           <ReactPaginate
             className="paginate"
             breakLabel="..."
@@ -77,7 +63,6 @@ export default function AnimeList () {
       </section>
 
       <Modal modal={modal} animeChoosed={animeChoosed} close={() => showHideModal(false)} />
-      {/* collection={collection} */}
     </main>
   )
 }

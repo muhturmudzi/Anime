@@ -14,23 +14,10 @@ export default function AnimeDetail () {
   const [modal, setModal] = useState(false)
   const { loading, error, data } = useQuery(GET_ANIME_DETAIL, { variables: { id: id } })
 
-  console.log(id)
   let animeAdded = getCollection().filter(item => item.animeList.find(anime => anime.id == id))
-  console.log(animeAdded, 'anime added')
-  // let animeAdded = []
-  // getCollection().forEach(item => {
-  //   item.animeList.forEach(anime => {
-  //     console.log(anime.id == id)
-  //   })
-  // })
-
-  // const setData = async () => {
-    //   await setAnime(data && data.Media)
-    // }
     
-    useEffect(() => {
-      setAnime(data && data.Media)
-      // console.log(Anime)
+  useEffect(() => {
+    setAnime(data && data.Media)
   })
 
   const showHideModal = (val) => {
@@ -45,8 +32,6 @@ export default function AnimeDetail () {
             <li>Anime</li>
             <li>{Anime && Anime.title && Anime.title.english}</li>
           </ul>
-          {/* parameter masuk adalah {id} {Anime && Anime.bannerImage}
-          <button onClick={() => showHideModal(true)}>add to collection</button> */}
           <div className="mb-2"><img src={Anime && Anime.bannerImage} alt="banner" /></div>
           <div className="container container--mini anime-detail">
             <div className="text-center mt-2 mb-2">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import Card from '../components/Card'
@@ -12,36 +12,10 @@ export default function MyCollectionDetail () {
   const [myCollection, setMyCollection] = useState(data)
   const [animeChoosed, setAnimeChoosed] = useState(null)
   const [modal, setModal] = useState(false)
-  
-  console.log(myCollection, 'collection')
-
-  useEffect(() => {
-    // console.log(getCollection().filter(item => item.title === title), 'collection')
-    // console.log(data, 'temp')
-    // setMyCollection({title: 'yoi', judul: 'iyo'})
-    // console.log(myCollection, 'collection')
-
-    // if (data.length > 0) {
-    //   findCollection()
-    //   setMyCollection(data)
-    //   console.log(myCollection)
-    // }
-  }, [])
-
-  const findCollection = async () => {
-    // let data = await getCollection
-    // console.log(data)
-    // let newData = data.find((item) => item.title === title)
-    // setMyCollection(newData)
-
-    await setMyCollection(() => {return {title: 'yoi', judul: 'iyo'}})
-    // console.log(myCollection, 'collection')
-  }
 
   let navigate = useNavigate()
   const detailAnime = (item) => {
     navigate(`/anime-detail/${item.id}`)
-    console.log(item)
   }
 
   const animePage = () => {
@@ -49,28 +23,20 @@ export default function MyCollectionDetail () {
   }
 
   const showHideModal = (val, data) => {
-    console.log(data)
     setAnimeChoosed(data)
     setModal(val)
   }
 
   const removeCollection = (item, index) => {
-    // console.log(item)
-    // console.log(item, index)
-    // let newArr = myCollection.animeList.filter((_, indexCollection) => indexCollection !== index)
-    // let data = myCollection
-    // data.animeList = newArr
     setMyCollection(myCollection.filter((_, indexCollection) => indexCollection !== index))
+    
     let newArrAnime = myCollection.filter((_, indexCollection) => indexCollection !== index)
-    // let collection = getCollection()
     let newArrCol = getCollection()
     newArrCol.forEach(col => {
       if (col.title === title) {
         col.animeList = newArrAnime
       }
     })
-
-    // console.log(newArrAnime, newArrCol)
     saveCollection(newArrCol)
   }
 
@@ -96,11 +62,6 @@ export default function MyCollectionDetail () {
                 <button className="btn btn--primary-outline mt-1 align-self-center" onClick={animePage}>Add Anime here</button>
               </div>
             }
-
-            {/* return (<span>{item.title.english}</span>) */}
-            {/* {myCollection.map((element, index) => {
-              return (<span key={index}>{element.title}</span>)
-            })} */}
           </div>
         </div>
       </section>

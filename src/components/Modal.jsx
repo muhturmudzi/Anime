@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { getCollection, saveCollection } from '../helper/Storage'
@@ -7,19 +7,15 @@ export default function Modal ({ modal, animeChoosed, close }) {
   const [collections, setCollection] = useState(getCollection)
   const [title, setTitle] = useState('')
   const [error, setError] = useState(false)
-  // const [showInput, setShowInput] = useState(false)
-
-  // useEffect(() => {
-  //   saveCollection(collections)
-  // }, [collections])
 
   const onChangeHandler = event => {
     setTitle(event.target.value)
   }
 
   const addNewCollection = () => {
+    if (!title) return
+    
     setTitle('')
-    // setShowInput(false)
     const newCollection = { title: title, animeList: [animeChoosed]}
 
     if (collections.length < 1) {
@@ -32,7 +28,6 @@ export default function Modal ({ modal, animeChoosed, close }) {
     let data = collections
     let checkTitle = data.find(item => item.title === newCollection.title)
 
-    // console.log(checkTitle)
     if (checkTitle) {
       setError(true)
       return
@@ -42,23 +37,10 @@ export default function Modal ({ modal, animeChoosed, close }) {
     data.push(newCollection)
     setCollection(data)
     saveCollection(data)
-    // console.log(collections)
     close()
   }
 
-  // const showingInput = () => {
-  //   setTitle('')
-  //   if (!showInput) {
-  //     setShowInput(true)
-  //     return
-  //   }
-
-  //   addNewCollection()
-  // }
-
   const addtoCollection = (val) => {
-    // console.log(val, 'title')
-    // console.log(animeChoosed)
     let data = collections
 
     data.forEach(item => {
@@ -70,20 +52,15 @@ export default function Modal ({ modal, animeChoosed, close }) {
       }
     })
 
-    // console.log(data)
-
     setCollection(data)
     saveCollection(data)
-    // console.log(collections)
 
     close()
   }
 
   let navigate = useNavigate()
   const detailCollection = (item) => {
-    // saveDetailCollection(item)
     navigate(`/collection-detail/${item.title}`)
-    console.log(item)
     close()
   }
 
@@ -113,20 +90,6 @@ export default function Modal ({ modal, animeChoosed, close }) {
                   <li key={index+item.title}>
                     <span onClick={() => detailCollection(item)}>{item.title}</span>
                     <button className="add" onClick={() => addtoCollection(item)}>+</button>
-                    {/* <button>See Detail Collection</button> */}
-      
-                    {/* <div>
-                      {item.animeList.length > 0 && item.animeList.map((anime, indexAnime) => {
-                          return (
-                            <span key={`list-anime-${indexAnime}`}>{anime && anime.title && anime.title.english}</span>
-                          )
-                        }
-                      )}
-      
-                      {item.animeList.length < 1 && (
-                        <span>belum memiliki anime</span>
-                      )}
-                    </div> */}
                   </li>
                 )
               })}

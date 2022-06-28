@@ -27,13 +27,6 @@ export const GET_LIST_ANIME = gql`
     }
   }
   `
-  // genres
-  // episodes
-  // chapters
-  // isAdult
-  // type
-  // status
-  // popularity
 
 export const GET_ANIME_DETAIL = gql`
   query getAnimeDetail ($id: Int) {
