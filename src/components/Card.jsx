@@ -1,6 +1,8 @@
 import React from 'react'
 // import { useNavigate } from 'react-router-dom'
 
+import nullBox from '../assets/images/package.png'
+
 // let navigate = useNavigate()
 // const goDetail = (id) => {
 //   navigate(`/anime-detail/${id}`)
@@ -12,7 +14,8 @@ export default function Card ({ number, id, type, title, image, status, episodes
     <div className="card">
       <div onClick={checkDetail}>
         <div className="card__image">
-          <img src={image} alt={image} />
+          {image && <img src={image} alt={image} />}
+          {!image && <img src={nullBox} alt='box' />}
           <span>{number}</span>
         </div>
         <div className="card__main">

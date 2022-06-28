@@ -1,11 +1,15 @@
 // Alignment
 .text-center { text-align: center; }
+.flex { display: flex; }
+.flex-column { flex-direction: column; }
+.align-self-center { align-self: center; }
 
 // Margin
 .m-0 { margin: 0 !important; }
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }
 
 // Padding
 .p-0 { padding: 0; }
@@ -22,7 +26,7 @@
   position: relative;
   width: 100%;
   border: solid 1px $red;
-  margin: 2rem 0;
+  margin: 3rem 0;
 
   &__text {
     position: absolute;

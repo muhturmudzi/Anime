@@ -84,6 +84,7 @@ export default function Modal ({ modal, animeChoosed, close }) {
     // saveDetailCollection(item)
     navigate(`/collection-detail/${item.title}`)
     console.log(item)
+    close()
   }
 
   return (

@@ -41,10 +41,14 @@ export default function AnimeDetail () {
     <main>
       <section className="section">
         <div className="container">
+          <ul className="list list--inline p-0 list--breadcumb mb-2">
+            <li>Anime</li>
+            <li>{Anime && Anime.title && Anime.title.english}</li>
+          </ul>
           {/* parameter masuk adalah {id} {Anime && Anime.bannerImage}
           <button onClick={() => showHideModal(true)}>add to collection</button> */}
           <div className="mb-2"><img src={Anime && Anime.bannerImage} alt="banner" /></div>
-          <div className="container container--short anime-detail">
+          <div className="container container--mini anime-detail">
             <div className="text-center mt-2 mb-2">
               <h2>{Anime && Anime.title && Anime.title.english}</h2>
               <button onClick={() => showHideModal(true)} className="btn btn--primary mt-1">Add to Collection</button>
@@ -52,7 +56,7 @@ export default function AnimeDetail () {
             <div>
               {animeAdded.length > 0 && 
                 <>
-                  <p className="label">This anime is available in collection</p>
+                  <p className="label">This anime is available in collection:</p>
                   <div className="wrap-desc">
                     {animeAdded.length > 0 && animeAdded.map(item => {
                       return <span className="desc" key={item.title}>{item.title}</span>

@@ -12,6 +12,11 @@
   &--short {
     max-width: $container-short;
   }
+
+  &--mini {
+    max-width: $container-mini;
+    padding: 0;
+  }
 }
 
 .anime-detail {

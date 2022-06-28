@@ -8,6 +8,22 @@
   &--collection > li {
     margin-bottom: 1rem;
   }
+
+  &--breadcumb > li {
+    position: relative;
+    font-size: 12px;
+
+    &:not(:last-of-type) {
+      margin-right: 30px;
+
+      &::after {
+        position: absolute;
+        content: '>';
+        top: 0;
+        right: -20px;
+      }
+    }
+  }
 }
 
 .paginate {
